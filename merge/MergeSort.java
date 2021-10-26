@@ -13,13 +13,16 @@ public class MergeSort {
         System.out.println("Sorted array:");
         Utils.printArray(arr);
     }
-
+    //System.out.println("SPLITTING THE (SUB)STRING IN HALF, RECURSIVELY");
+    //System.out.println("OPEN 2 INSTANCES FOR SUBTRINGS");
     private static void sort(int[] arr, int start, int end) {
-        if (end - start > 1) {
-            int middle = (start + end) / 2;
-            sort(arr, start, middle);
-            sort(arr, middle, end);
-            merge(arr, start, middle, end);
+        if (end - start > 1) {            
+            int middle = (start + end) / 2; System.out.println("MIDDLE=start("+start+"),end("+end+")/2 ="+middle);
+            sort(arr, start, middle); System.out.println("SORT SUBARRAY[positions: start("+start+"), middle="+middle+"]");
+            System.out.println("SORT SUBARRAY[values: ("+arr[start]+"),"+arr[middle]+"]");
+            sort(arr, middle, end);System.out.println("SORT SUBARRAY[positions: middle("+middle+"), end="+end+"]");
+            System.out.println("SORT SUBARRAY[values: (" + arr[middle]+ ")," +arr[end]+" ]");
+            merge(arr, start, middle, end); System.out.println("MERGE SUBTRINGS");
         }
     }
 
